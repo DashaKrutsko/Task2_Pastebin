@@ -8,9 +8,6 @@ import org.openqa.selenium.support.ui.Select;
 
 public class PastebinHomePage extends AbstractPage {
     private static final String HOME_PAGE_URL = "https://pastebin.com/";
-    public static final String PASTE_NAME = "how to gain dominance among developers";
-    public static final String CODE_STRING = "git config --global user.name \"New Sheriff in Town\"\ngit reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\ngit push origin master --force";
-    public static final String CODE_FORMAT = "Bash";
 
     @FindBy(id = "postform-text")
     private WebElement searchCode;
@@ -44,23 +41,23 @@ public class PastebinHomePage extends AbstractPage {
         return this;
     }
 
-    public PastebinHomePage enterCode() {
-        waitForVisibilityOfElement(searchCode).sendKeys(CODE_STRING);
+    public PastebinHomePage enterCode(String codeString) {
+        waitForVisibilityOfElement(searchCode).sendKeys(codeString);
         return this;
     }
 
-    public PastebinHomePage enterName() {
-        waitForVisibilityOfElement(searchName).sendKeys(PASTE_NAME);
+    public PastebinHomePage enterName(String pasteName ) {
+        waitForVisibilityOfElement(searchName).sendKeys(pasteName);
         return this;
     }
 
-    public PastebinHomePage enterExpiration() {
-        selectDropboxElement(searchExpiration, "10 Minutes");
+    public PastebinHomePage enterExpiration(String expirationTime) {
+        selectDropboxElement(searchExpiration, expirationTime);
         return this;
     }
 
-    public PastebinHomePage enterFormat() {
-        selectDropboxElement(searchFormat, CODE_FORMAT);
+    public PastebinHomePage enterFormat(String codeFormat) {
+        selectDropboxElement(searchFormat, codeFormat);
         return this;
     }
 

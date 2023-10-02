@@ -10,7 +10,7 @@ import java.time.Duration;
 import java.util.List;
 
 public abstract class AbstractPage {
-    static final Duration WAIT_TIMEOUT_SECONDS = Duration.ofSeconds(20);
+    static final Duration WAIT_TIMEOUT_SECONDS = Duration.ofSeconds(10);
     protected WebDriver driver;
 
     public AbstractPage(WebDriver driver) {
@@ -19,10 +19,10 @@ public abstract class AbstractPage {
     }
 
     protected WebElement waitForVisibilityOfElement(WebElement webElement) {
-        return new WebDriverWait(driver, AbstractPage.WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(webElement));
+        return new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(webElement));
     }
 
     protected void waitForVisibilityOfListElements(List<WebElement> webElements) {
-        new WebDriverWait(driver, AbstractPage.WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOfAllElements(webElements));
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOfAllElements(webElements));
     }
 }
